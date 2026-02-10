@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-ui-dep
+  labels:
+    {{- include "ui.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      {{- include "ui.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "ui.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: react-ui
+          image: {{ .Values.deployment.image }}
+          imagePullPolicy: IfNotPresent
+          resources:
+            # limits:
+            #   cpu: {{ .Values.deployment.resources.limits.cpu }}
+            #   memory: {{ .Values.deployment.resources.limits.memory }}
+            # requests:
+            #   cpu: {{ .Values.deployment.resources.requests.cpu }}
+            #   memory: {{ .Values.deployment.resources.requests.memory }}
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
+          
+            

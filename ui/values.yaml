@@ -1,0 +1,15 @@
+deployment:
+   replicas: 1
+   image: pavank95/ui
+   env: dev
+   resources:
+     limits:
+       cpu: 0.2
+       memory: 500Mi
+     requests:
+       cpu: 0.2
+       memory: 500Mi
+
+hpa:
+  enabled: false
+

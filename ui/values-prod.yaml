@@ -1,0 +1,18 @@
+deployment:
+   replicas: 6
+   image: pavank95/ui-prod
+   env: prod
+   resources:
+     limits:
+       cpu: 4
+       memory: 16Gi
+     requests:
+       cpu: 4
+       memory: 16Gi
+
+hpa:
+  enabled: true
+  maxreplicas: 10
+  minrplicas: 4
+  cuputi: 90
+
