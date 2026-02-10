@@ -13,3 +13,5 @@ deployment:
 hpa:
   enabled: false
 
+# helm install <release-name> <chart-path> -f values/values-<env>.yaml
+
